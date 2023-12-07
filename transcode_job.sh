@@ -20,7 +20,9 @@ end_idx=$(($start_idx+$tasks_per_job))
 end_idx=$(($end_idx < $no_files ? $end_idx:$no_files))
 # Transcode everything between start and end idx's
 for i in $(seq $start_idx $end_idx); do
-    ./ff/ffmpeg -i $arr[$i] -map v:0 -vcodec libx265 -crf 23 -x265-params "keyint=11:no-open-gop=1" -pix_fmt yuv420p ./output/output.mp4
+  file="${all_files[$i]}"
+  file_basename="$(basename -- $file)"
+  ./ff/ffmpeg -i "$file" -map v:0 -vcodec libx265 -crf 23 -x265-params "keyint=11:no-open-gop=1" -pix_fmt yuv420p ./prfr_output/prfr"$file_basename"
 done
 
 
