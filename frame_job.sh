@@ -14,4 +14,6 @@ source ./split_work.sh
 
 # Transcode in parallel:
 parallel -j "$PARALLEL_PER_JOB" \
-"$FFMPEG_LOC -i {} $TRANSCODE_FFMPEG_ARGS $TRANSCODE_OUTPUT_DIR/{/}" ::: "${sliced_files[@]}"
+"mkdir -p $OUTPUT_DIR/{/.} \
+&& \
+$FFMPEG_LOC -i {} $FRAME_FFMPEG_ARGS $FRAME_OUTPUT_DIR/{/.}/{/.}_frame%03d.jpg" ::: "${sliced_files[@]}"
