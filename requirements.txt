@@ -1,0 +1,2 @@
+git+https://github.com/neosatrapahereje/rach3datautils.git#egg=rach3datautils
+tqdm
