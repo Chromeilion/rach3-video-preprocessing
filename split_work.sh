@@ -1,12 +1,3 @@
-# If GNU Parallel is not found attempt to install it.
-if ! command -v parallel &> /dev/null
-then
-    # Downloading a bash script is scary, but this is a supported install
-    # method from the developers themselves.
-    (wget -O - pi.dk/3 || curl pi.dk/3/ || fetch -o - http://pi.dk/3) | bash
-fi
-
-
 # Use nullglob in case there are no matching files
 shopt -s nullglob
 

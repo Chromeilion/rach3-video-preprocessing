@@ -13,7 +13,7 @@ set -a; source .env; set +a
 source ./split_work.sh
 
 # Transcode in parallel:
-parallel -j "$PARALLEL_PER_JOB" \
+./compiled/bin/parallel -j "$PARALLEL_PER_JOB" \
 "mkdir -p $OUTPUT_DIR/{/.} \
 && \
 $FFMPEG_LOC -i {} $FRAME_FFMPEG_ARGS $FRAME_OUTPUT_DIR/{/.}/{/.}_frame%03d.jpg" ::: "${sliced_files[@]}"

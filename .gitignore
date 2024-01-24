@@ -163,3 +163,4 @@ cython_debug/
 
 frame_job.sh/
 prfr_output/
+compiled/
